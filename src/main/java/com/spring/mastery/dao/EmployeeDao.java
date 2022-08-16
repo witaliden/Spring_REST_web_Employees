@@ -1,6 +1,7 @@
 package com.spring.mastery.dao;
 
 import com.spring.mastery.dto.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -11,21 +12,17 @@ import java.util.List;
 @Component
 public class EmployeeDao {
     private final JdbcTemplate jdbcTemplate;
-
+    @Autowired
     public EmployeeDao(DataSource dataSource){
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
-
-    /*public void setJdbcTemplate(DataSource dataSource) {
-        jdbcTemplate = new JdbcTemplate(dataSource);
-    }*/
 
     public List<Employee> getAllEmployees() {
         String query = "SELECT * FROM employees";
         return jdbcTemplate.query(query, new EmployeeMapper());
     }
     public Employee getEmployeeById(long employeeId) {
-        String query = "SELECT * FROM employees WHERE 'employee_id' = ?";
+        String query = "SELECT * FROM employees WHERE employee_id = ?";
         return jdbcTemplate.queryForObject(query, new Object[] {employeeId}, new EmployeeMapper());
     }
 
