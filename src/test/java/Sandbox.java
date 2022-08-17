@@ -1,9 +1,7 @@
-package java;
 
 import com.github.javafaker.Faker;
 import com.spring.mastery.dto.Employee;
 import com.spring.mastery.dto.Gender;
-
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -12,18 +10,17 @@ public class Sandbox {
     public static void main(String[] args) {
         Faker faker = new Faker();
 
-/*        // Number list
+        // Number list
         System.out.println("Random numbers:");
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 10; i++){
             numbers.add(faker.number().numberBetween(-100, 100));
         }
-        numbers.forEach(System.out::println);
-        System.out.println("*****");
+        System.out.println(numbers);
 
         System.out.println("Positive numbers:");
-        numbers.stream().filter(integer -> integer > 0).forEach(System.out::println);
-        System.out.println("*****");*/
+        Set<Integer> l = numbers.stream().filter(integer -> integer > 0).collect(Collectors.toSet());
+        System.out.println(l);
 
         //Object list
         System.out.println("Random employees:");
@@ -40,6 +37,8 @@ public class Sandbox {
             employeeMap.put((long)i, employee);
             }
         }
+
+/*        Set<Employee> streamSet = employeeSet*/
 
 /*        Set<Employee> newSet = employeeSet.stream().filter(e -> e.getEmployeeID() > 4).collect(Collectors.toSet());
         newSet.stream().map(Employee::toString).forEach(System.out::println);

@@ -12,8 +12,6 @@ import java.util.Optional;
 @Service
 public class EmployeeService {
     private EmployeeDao employeeDao;
-
-/*    public EmployeeService(){}*/
     @Autowired
     public EmployeeService(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;

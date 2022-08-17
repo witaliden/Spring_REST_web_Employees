@@ -1,18 +1,14 @@
 package com.spring.mastery.dto;
 
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
-//@Builder
 @Getter
 @Setter
-@Data
-@Entity(name = "Employees")
+@Entity(name = "employees")
 public class Employee implements Comparable {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "employee_id")
@@ -53,62 +49,6 @@ public class Employee implements Comparable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    /*
-    public Long getEmployeeID() {
-        return employeeID;
-    }
-
-    public void setEmployeeID(Long employeeID) {
-        this.employeeID = employeeID;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public int getDepartmentID() {
-        return departmentID;
-    }
-
-    public void setDepartmentID(int departmentID) {
-        this.departmentID = departmentID;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }*/
 
     //----- override methods of Object class
     @Override
