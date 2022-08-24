@@ -11,33 +11,29 @@ import java.util.Optional;
 
 @Service
 public class EmployeeService {
-    private EmployeeDao employeeDao;
     @Autowired
-    public EmployeeService(EmployeeDao employeeDao) {
-        this.employeeDao = employeeDao;
-    }
+    private EmployeeDao employeeDao;
 
-     public List<Employee> getAll() {
+    public List<Employee> getAll() {
         return employeeDao.getAllEmployees();
     }
 
     public Employee getById(long employee_id) throws ResourceNotFoundException {
-        if(employeeDao.getEmployeeById(employee_id) == null){
+        if (employeeDao.getEmployeeById(employee_id) == null) {
             throw new ResourceNotFoundException("There is no employee with id " + employee_id);
         }
         return employeeDao.getEmployeeById(employee_id);
     }
 
     public void add(Employee newEmployee) throws ResourceNotFoundException {
-        if (newEmployee == null){
+        if (newEmployee == null) {
             throw new IllegalArgumentException();
         }
         employeeDao.addEmployee(newEmployee);
     }
 
-
     public void delete(Long employeeToDeleteId) throws ResourceNotFoundException {
-        if(employeeDao.getEmployeeById(employeeToDeleteId) == null){
+        if (employeeDao.getEmployeeById(employeeToDeleteId) == null) {
             throw new ResourceNotFoundException("There is no employee with id " + employeeToDeleteId);
         }
         employeeDao.deleteEmployee(employeeToDeleteId);

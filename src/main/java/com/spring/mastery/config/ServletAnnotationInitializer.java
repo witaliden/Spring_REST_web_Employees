@@ -2,10 +2,10 @@ package com.spring.mastery.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class ServletConfiguration extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class ServletAnnotationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[0]/*{AppConfiguration.class}*/;
+        return null;
     }
 
     @Override
@@ -15,6 +15,6 @@ public class ServletConfiguration extends AbstractAnnotationConfigDispatcherServ
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/"};
+        return new String[]{"/mastery.com/*"};
     }
 }
