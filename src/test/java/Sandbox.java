@@ -1,5 +1,4 @@
 
-import com.github.javafaker.Faker;
 import com.spring.mastery.dto.Employee;
 import com.spring.mastery.dto.Gender;
 import java.util.*;
@@ -8,13 +7,12 @@ import java.util.stream.Collectors;
 
 public class Sandbox {
     public static void main(String[] args) {
-        Faker faker = new Faker();
 
         // Number list
         System.out.println("Random numbers:");
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 10; i++){
-            numbers.add(faker.number().numberBetween(-100, 100));
+            numbers.add(new Random().nextInt());
         }
         System.out.println(numbers);
 
@@ -22,20 +20,7 @@ public class Sandbox {
         Set<Integer> l = numbers.stream().filter(integer -> integer > 0).collect(Collectors.toSet());
         System.out.println(l);
 
-        //Object list
-        System.out.println("Random employees:");
-        Set<Employee> employeeSet = new TreeSet<>();
-        Map<Long, Employee> employeeMap = new HashMap<>();
-        Set<Employee> employeeHashSet = new HashSet<>();
-        Employee employee;
 
-        for (int i = 1; i <= 10; i++){
-            employee = new Employee((long)i, faker.name().firstName(), faker.name().lastName(), faker.number().numberBetween(1,9),
-                    faker.job().title(), Gender.values()[faker.number().numberBetween(0,1)], faker.date().past(6580, TimeUnit.DAYS));
-            employeeSet.add(employee);
-            employeeHashSet.add(employee);
-            employeeMap.put((long)i, employee);
-            }
         }
 
 /*        Set<Employee> streamSet = employeeSet*/

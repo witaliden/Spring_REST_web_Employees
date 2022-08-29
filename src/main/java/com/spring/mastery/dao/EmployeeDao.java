@@ -3,16 +3,17 @@ package com.spring.mastery.dao;
 import com.spring.mastery.dto.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
 import java.util.List;
 
-//@Repository
-@Component
+@Repository
 public class EmployeeDao {
+    private final JdbcTemplate jdbcTemplate;
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public EmployeeDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<Employee> getAllEmployees() {
         String query = "SELECT * FROM employees";

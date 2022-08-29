@@ -7,12 +7,15 @@ import org.springframework.stereotype.Service;
 import com.spring.mastery.dao.EmployeeDao;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmployeeService {
+    private final EmployeeDao employeeDao;
+
     @Autowired
-    private EmployeeDao employeeDao;
+    public EmployeeService(EmployeeDao employeeDao) {
+        this.employeeDao = employeeDao;
+    }
 
     public List<Employee> getAll() {
         return employeeDao.getAllEmployees();
@@ -40,11 +43,10 @@ public class EmployeeService {
     }
 
     public void update(Employee newEmployee, long id) throws ResourceNotFoundException {
-
-        Optional<Employee> checkIfInDB = Optional.ofNullable(employeeDao.getEmployeeById(newEmployee.getEmployeeID()));
-        if (checkIfInDB.isPresent()) {
+        if (employeeDao.getEmployeeById(id) == null) {
+            throw new ResourceNotFoundException("There is no employee with id " + newEmployee);
+        } else
             employeeDao.updateEmployee(newEmployee, id);
-        } else throw new ResourceNotFoundException("There is no employee with id " + newEmployee);
     }
 }
 

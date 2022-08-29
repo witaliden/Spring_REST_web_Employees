@@ -15,6 +15,6 @@ public class ServletAnnotationInitializer extends AbstractAnnotationConfigDispat
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/mastery.com/*"};
+        return new String[]{"/"};
     }
 }

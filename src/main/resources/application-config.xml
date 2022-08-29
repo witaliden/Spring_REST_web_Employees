@@ -9,10 +9,8 @@
             http://www.springframework.org/schema/context
             https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
     
-    <!--<context:component-scan base-package="com.spring.mastery.rest"/>-->
-
-<!--    <context:property-placeholder location="classpath:application.properties"/>
-    <context:component-scan base-package="com.mastery.java"/>
+<!--    <context:component-scan base-package="com.spring.mastery.rest"/>
+    <context:property-placeholder location="classpath:application.properties"/>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB/INF/view/"/>
@@ -23,7 +21,7 @@
         <constructor-arg ref="dataSource"/>
     </bean>
 
-    <bean id="controller" class="com.mastery.java.task.rest.EmployeeController">
+    <bean id="controller" class="com.spring.mastery.rest.EmployeeController">
         <constructor-arg ref="employeeService"/>
     </bean>
 
